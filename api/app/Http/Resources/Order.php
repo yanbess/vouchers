@@ -22,7 +22,7 @@ class Order extends JsonResource
             'amount' => $this->voucher ? $this->amount - $this->voucher->discount : $this->amount,
             'origin_amount' => $this->amount,
             'status' => $this->status,
-            'payed_at' => $this->payed_at,
+            'purchased_at' => $this->purchased_at,
             'updated_at' => $this->updated_at,
             'created_at' => $this->created_at,
             'voucher' => $voucher,

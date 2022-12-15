@@ -39,15 +39,22 @@ class OrderController extends Controller
     /**
      * Get a paginated list of orders sorted by purchased date
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function list()
+    public function list(Request $request)
     {
+        $query = Order::with(['voucher']);
+
+        if ($request->purchased_only) {
+            $query->whereNotNull('purchased_at')
+                ->orderBy('purchased_at', 'desc');
+        } else {
+            $query->orderBy('created_at', 'asc');
+        }
+
         $this->setResponseData(new OrderCollection(
-            Order::where('status', Order::STATUS_PAID)
-                ->with(['voucher'])
-                ->orderBy('updated_at', 'asc')
-                ->paginate(5)
+                $query->paginate(5)
             )
         );
         return $this->getResponse();

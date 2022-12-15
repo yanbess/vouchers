@@ -16,8 +16,8 @@ class InitDb extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->float('amount', 8, 2);
-            $table->enum('status', ['new', 'cancelled', 'paid'])->default('new');
-            $table->timestamp('payed_at')->nullable();
+            $table->enum('status', ['new', 'cancelled', 'purchased'])->default('new');
+            $table->timestamp('purchased_at')->nullable();
             $table->timestamps();
         });
 

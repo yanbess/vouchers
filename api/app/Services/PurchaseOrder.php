@@ -35,8 +35,8 @@ class PurchaseOrder
             'id' => $orderId,
             'status' => Order::STATUS_NEW,
         ])->firstOrFail();
-        $order->status = 'paid';
-        $order->payed_at = Carbon::now();
+        $order->status = Order::STATUS_PURCHASED;
+        $order->purchased_at = Carbon::now();
         $order->save();
 
         if ($voucherCode) {

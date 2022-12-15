@@ -8,7 +8,7 @@ class Order extends Model
 {
     const STATUS_NEW = 'new';
     const STATUS_CANCELLED = 'cancelled';
-    const STATUS_PAID = 'paid';
+    const STATUS_PURCHASED = 'purchased';
 
     /**
      * The attributes that are mass assignable.
